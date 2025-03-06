@@ -33,6 +33,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.locationTextView.setText(post.getLocation());
         // Load image using a library like Glide or Picasso
         // Glide.with(holder.itemView.getContext()).load(post.getImageUrl()).into(holder.postImageView);
+
+        if (post.getScheduledTime() > System.currentTimeMillis()) {
+            holder.scheduledIndicator.setVisibility(View.VISIBLE);
+        } else {
+            holder.scheduledIndicator.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -44,12 +50,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ImageView postImageView;
         public TextView captionTextView;
         public TextView locationTextView;
+        public View scheduledIndicator; // New UI element to indicate scheduled posts
 
         public ViewHolder(View itemView) {
             super(itemView);
             postImageView = itemView.findViewById(R.id.postImageView);
             captionTextView = itemView.findViewById(R.id.captionTextView);
             locationTextView = itemView.findViewById(R.id.locationTextView);
+            scheduledIndicator = itemView.findViewById(R.id.scheduledIndicator); // Initialize the new UI element
         }
     }
 }

@@ -3,12 +3,13 @@ package com.example.instagram;
 public class Post {
     private String imageUrl;
     private String caption;
-    private String location; // P7834
+    private String location;
+    private long scheduledTime; // New attribute to store the scheduled time
 
-    public Post(String imageUrl, String caption, String location) { // P313f
+    public Post(String imageUrl, String caption, String location) {
         this.imageUrl = imageUrl;
         this.caption = caption;
-        this.location = location; // P313f
+        this.location = location;
     }
 
     public String getImageUrl() {
@@ -27,11 +28,19 @@ public class Post {
         this.caption = caption;
     }
 
-    public String getLocation() { // P056d
-        return location; // P056d
-    } // P056d
+    public String getLocation() {
+        return location;
+    }
 
-    public void setLocation(String location) { // P056d
-        this.location = location; // P056d
-    } // P056d
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public long getScheduledTime() { // Getter method for scheduledTime
+        return scheduledTime;
+    }
+
+    public void setScheduledTime(long scheduledTime) { // Setter method for scheduledTime
+        this.scheduledTime = scheduledTime;
+    }
 }
