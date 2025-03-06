@@ -51,3 +51,35 @@ To use the AI access and API key entry feature, follow these steps:
 
 ### Implementation
 The `AISettingsActivity` class includes methods to handle payment for AI access and entering API keys. It also includes UI elements for payment and API key entry, and logic to save API keys and handle payments.
+
+## Post Scheduling Feature
+
+### Overview
+The `PostScheduler` class is responsible for handling the scheduling logic within the application. It allows users to schedule posts for a specific time, enabling them to edit all at once but spread out the content.
+
+### Usage
+To use the post scheduling feature, follow these steps:
+1. Initialize the `PostScheduler` in your activity:
+   ```java
+   PostScheduler postScheduler = new PostScheduler();
+   ```
+2. Schedule a post using the `schedulePost` method:
+   ```java
+   Post post = new Post("imageUrl", "caption", "location");
+   long scheduledTime = System.currentTimeMillis() + 60000; // Schedule for 1 minute later
+   postScheduler.schedulePost(post, scheduledTime);
+   ```
+
+### Implementation
+The `PostScheduler` class includes methods to schedule posts and check for scheduled posts to be posted. It also includes logic to handle the scheduling and posting of the scheduled posts.
+
+### UI Elements
+The post scheduling feature includes new UI elements in the `activity_home.xml` and `activity_storybook.xml` files. These elements allow users to schedule posts directly from the UI.
+
+### Code Changes
+The following code changes were made to implement the post scheduling feature:
+- Added a new `PostScheduler` class to handle scheduling logic.
+- Updated the `Post` class to include a `scheduledTime` attribute and its getter and setter methods.
+- Modified the `PostAdapter` to display scheduled posts with a different UI indication.
+- Added UI elements in `activity_home.xml` and `activity_storybook.xml` for scheduling posts.
+- Updated `HomeActivity` and `StorybookActivity` to handle scheduling posts using `PostScheduler`.
