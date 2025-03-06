@@ -30,6 +30,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = posts.get(position);
         holder.captionTextView.setText(post.getCaption());
+        holder.locationTextView.setText(post.getLocation());
         // Load image using a library like Glide or Picasso
         // Glide.with(holder.itemView.getContext()).load(post.getImageUrl()).into(holder.postImageView);
     }
@@ -42,11 +43,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView postImageView;
         public TextView captionTextView;
+        public TextView locationTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             postImageView = itemView.findViewById(R.id.postImageView);
             captionTextView = itemView.findViewById(R.id.captionTextView);
+            locationTextView = itemView.findViewById(R.id.locationTextView);
         }
     }
 }
