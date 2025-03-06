@@ -10,6 +10,7 @@ import android.widget.Button;
 public class HomeActivity extends AppCompatActivity {
     private ThemeEngine themeEngine;
     private Button storybookButton;
+    private Button aiSettingsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, StorybookActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        aiSettingsButton = findViewById(R.id.aiSettingsButton);
+        aiSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, AISettingsActivity.class);
                 startActivity(intent);
             }
         });
