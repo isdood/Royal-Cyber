@@ -17,6 +17,13 @@ class PostAdapter: NSObject, UICollectionViewDataSource {
         cell.captionLabel.text = post.getCaption()
         // Load image using a library like SDWebImage or Kingfisher
         // cell.postImageView.sd_setImage(with: URL(string: post.getImageUrl()), completed: nil)
+
+        if post.getScheduledTime() > Date().timeIntervalSince1970 {
+            cell.scheduledIndicator.isHidden = false
+        } else {
+            cell.scheduledIndicator.isHidden = true
+        }
+
         return cell
     }
 }
@@ -24,4 +31,5 @@ class PostAdapter: NSObject, UICollectionViewDataSource {
 class PostCell: UICollectionViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var scheduledIndicator: UIView! // New UI element to indicate scheduled posts
 }
