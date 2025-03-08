@@ -24,6 +24,10 @@ class Web3LoginViewController: UIViewController {
     }
 
     @objc private func web3LoginButtonTapped() {
+        handleWeb3LoginButtonClick()
+    }
+
+    private func handleWeb3LoginButtonClick() {
         // Implement web3 login logic using blockchain technology
         let web3 = Web3.InfuraMainnetWeb3()
         let keystoreManager = KeystoreManager.managerForPath("path/to/keystore")
@@ -31,6 +35,22 @@ class Web3LoginViewController: UIViewController {
 
         // Example logic for web3 login
         let address = EthereumAddress("0xYourEthereumAddress")!
+        let balanceResult = try? web3.eth.getBalance(address: address)
+        if let balance = balanceResult {
+            print("Balance: \(balance)")
+        } else {
+            print("Failed to get balance")
+        }
+    }
+
+    private func performWeb3Login(walletAddress: String) {
+        // Implement web3 login logic using blockchain technology
+        let web3 = Web3.InfuraMainnetWeb3()
+        let keystoreManager = KeystoreManager.managerForPath("path/to/keystore")
+        web3.addKeystoreManager(keystoreManager)
+
+        // Example logic for web3 login
+        let address = EthereumAddress(walletAddress)!
         let balanceResult = try? web3.eth.getBalance(address: address)
         if let balance = balanceResult {
             print("Balance: \(balance)")
